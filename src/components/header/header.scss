@@ -1,0 +1,31 @@
+
+header{
+    display:block;
+    width:100%;
+    margin:0 auto;
+    padding:0 10px;
+    height:100px;
+    background:black;
+    .wrap{
+        position: relative;
+        display: block;
+        width:100%;
+        margin:0 atuo;
+        max-width:980px;
+        .logo{
+            display:block;
+            width:100px;
+            height:100px;
+            position: absolute;
+            left:10px;
+            top:0px;
+
+            img{
+                display:block;
+                width:100px;
+                height:100px;
+                margin:0;
+            }
+        }
+    }
+}
