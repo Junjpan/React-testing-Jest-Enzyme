@@ -1,3 +1,3 @@
-export const types= {
+export default {
 GET_POSTS:'getPost'
 }

@@ -1,5 +1,5 @@
 //Use TDD appoach
-import {types} from '../../actions/types';
+import types from '../../actions/types';
 import PostReducer from './reducer';
 
 
