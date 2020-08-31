@@ -19,14 +19,13 @@ export const checkProps=(component,expectedProps)=>{
 
 //create teststore
 
-export const testStore=createStore(
+export const testStore=(initialState)=>createStore(
     rootReducer,
-    {},
+    initialState,
     applyMiddleware(...middlewares)
 )
 
 /** 
-//there is another way to create a test store or store, if so, put code "const store=testStore()" instead of "const store=testStore" in the integration.spec.js file;
 
 export const testStore=(initialState)=>{
 const createStoreWithMiddleware=applyMiddleware(...middlewares)(createStore)
