@@ -20,11 +20,14 @@ describe('ShareButton Component',()=>{
 
     describe('Render',()=>{
         let component; 
+        let mockFunc;
         
         beforeEach(()=>{
+            mockFunc=jest.fn();
             const props={
                 buttonText:"example button",
-                emitEvent:()=>{}
+                //simulate events (reference:https://enzymejs.github.io/enzyme/docs/api/ShallowWrapper/simulate.html)
+                emitEvent:mockFunc
             }
             component=shallow(<SharedButton {...props} />)
         })
@@ -34,5 +37,16 @@ describe('ShareButton Component',()=>{
             expect(button.length).toBe(1)
         })
 
+        it('Should emit callback on a click event',()=>{
+            const button=findByTestAttr(component,'sharebutton');
+            button.simulate('click');
+            button.simulate('click');
+            const callback=mockFunc.mock.calls.length;
+            expect(callback).toBe(2)
+
+        })
+
     })
+
+
 })

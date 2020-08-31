@@ -9,7 +9,6 @@ import { findByTestAttr, testStore } from "./../utils/index";
 const setup = (initialState = {}) => {
   const store = testStore(initialState);
   const component = mount(<Provider store={store}><App  /></Provider>);
-  console.log(component.debug())
   return component;
 };
 
