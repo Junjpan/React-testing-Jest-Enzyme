@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{Component}from "react";
 import Header from "./components/header";
 import Headline from "./components/headline";
 import { connect } from "react-redux";
@@ -17,14 +17,33 @@ const tempArr = [
   },
 ];
 
-function App(props) {
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      hidBtn:false
+    }
+    this.fetch=this.fetch.bind(this)
+  }
+
+  fetch(){
+    this.props.fetchPosts();
+    this.toggleState();
+  }
+ 
+ toggleState=()=>{
+    this.setState({hidBtn:!this.state.hidBtn})
+  }
+
+  addOne=(number)=>{
+    return number+1
+  }
+render(){
+  const {posts}=this.props;
   const configButton = {
     buttonText: "Get Posts",
-    emitEvent: props.fetchPosts,
+    emitEvent:this.fetch
   };
-
-  const { posts } = props;
-
   return (
     <div className='App' data-test="appComponent">
       <Header />
@@ -34,7 +53,7 @@ function App(props) {
           desc='Click the button to render posts!'
           tempArr={tempArr}
         />
-        <SharedButton {...configButton} />
+        {!this.state.hidBtn&&<SharedButton {...configButton} />}        
         {posts.length > 0 && (
           <div>
             {posts.map((post,index) => {
@@ -48,9 +67,10 @@ function App(props) {
     </div>
   );
 }
+  
+}
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { posts: state.postReducer };
 };
 
