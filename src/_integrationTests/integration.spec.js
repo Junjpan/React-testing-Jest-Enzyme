@@ -3,9 +3,11 @@ import { testStore } from "./../../utils/index";
 import { fetchPosts } from "./../actions/index";
 
 describe("fetchPost actions", () => {
+
   beforeEach(() => {
     moxios.install();
   });
+  
   afterEach(() => {
     moxios.uninstall();
   });
@@ -45,3 +47,6 @@ describe("fetchPost actions", () => {
                  })
   });
 });
+
+//since I build a new file "axios.js" for mocking axios which is under the  __mocks__folder, this test run the mocks axios from that folder instead run the moxios here.
+//becaue of that the test failed, however, I would like to keep this test because it show another appoarch to mock axios
